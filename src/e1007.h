@@ -23,7 +23,7 @@ class e1007 {
 
   private:
     HardwareSerial *_serial;
-    void (*_ScanCallback)(String, long);
+    void (*_ScanCallback)(char *, long);
     char *in_buf;
     bool waiting_answer;
     void cleanBuffer();
@@ -33,7 +33,7 @@ class e1007 {
     long scan_param;
   
   public:
-    e1007(HardwareSerial*, void (*_ScanCallback)(String, long), int = 9600, long = 4000);
+    e1007(HardwareSerial*, void (*_ScanCallback)(char*, long), int = 9600, long = 4000);
     ~e1007();
     void loop();
     bool startScan(long = 0);

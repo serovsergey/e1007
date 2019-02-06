@@ -1,6 +1,6 @@
 #include "e1007.h"
 
-e1007::e1007(HardwareSerial *serial, void (*ScanCallback)(String, long), int _speed, long _timeout){
+e1007::e1007(HardwareSerial *serial, void (*ScanCallback)(char*, long), int _speed, long _timeout){
   _ScanCallback = ScanCallback;
   _serial = serial;
   _serial->begin(_speed);
@@ -32,16 +32,14 @@ bool e1007::startScan(long param){
         waiting_answer = true;
         in_buf_size = 0;
         timeshot=millis();
-        Serial.println("... startScan Successful ...");
         return true;    
       }
   }
-  if(!readed) Serial.println("!!! Scan Timeout !!!");
+  if(!readed) /*Serial.println("!!! Scan Timeout !!!");*/
   return false;
 }
 
 void e1007::stopScan(){
-  Serial.println("... stopScan ...");
   char buf[100];
   memset(&buf, 0, 100);
   _serial->write(stop_scan, sizeof(stop_scan));
