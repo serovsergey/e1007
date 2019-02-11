@@ -15,7 +15,7 @@ e1007::~e1007(){
 
 void e1007::cleanBuffer(){
   while (_serial->available()>0) {
-    byte inChar = _serial->read();}
+    /*byte inChar = */_serial->read();}
 }
 
 bool e1007::startScan(long param){
@@ -35,7 +35,7 @@ bool e1007::startScan(long param){
         return true;    
       }
   }
-  if(!readed) /*Serial.println("!!! Scan Timeout !!!");*/
+  /*if(!readed) Serial.println("!!! Scan Timeout !!!");*/
   return false;
 }
 
